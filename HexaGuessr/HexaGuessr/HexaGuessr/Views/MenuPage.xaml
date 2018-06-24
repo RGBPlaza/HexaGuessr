@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HexaGuessr.Views.MenuPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout x:Name="ConstellationsCanvas" Grid.RowSpan="5"/>
+
+            <Label Text="HexaGuessr" Grid.Row="1" FontSize="42" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Light" />
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+
+            <StackLayout Grid.Row="3" Spacing="8">
+
+                <Button x:Name="GuessHexButton" Text="Guess Hex" BackgroundColor="#eeeeeeee" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" HeightRequest="52" WidthRequest="256">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+
+                <Button x:Name="GuessColourButton" Text="Guess Colour" BackgroundColor="#eeeeeeee" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" HeightRequest="52" WidthRequest="256">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+                
+            </StackLayout>
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
