@@ -1,12 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HexaGuessr.Views.GuessHexPage">
+             x:Class="HexaGuessr.Views.GuessHexPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowSpacing="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="48" HeightRequest="48" BorderWidth="0" TextColor="White" BackgroundColor="Transparent" Clicked="BackButton_Clicked">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Reegular"/>
+                        <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                    </OnPlatform>
+                </Button.FontFamily>
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <!-- These Characters are Back Icons -->
+                        <On Platform="iOS" Value=""/>
+                        <On Platform="Android" Value=""/>
+                        <On Platform="UWP" Value=""/>
+                    </OnPlatform>
+                </Button.Text>
+                <Button.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="24"/>
+                </Button.FontSize>
+            </Button>
+
+            <Label Text="Guess the Hex" Grid.Row="1" FontSize="42" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Light" />
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="#" FontSize="42" VerticalTextAlignment="Center" TextColor="White">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Entry FontSize="42" MinimumWidthRequest="128" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White">
+                    <Entry.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Entry.FontFamily>
+                </Entry>
+            </StackLayout>
+
+            <Button x:Name="SubmitButton" Grid.Row="4" Text="Submit" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Light" />
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                    </OnPlatform>
+                </Button.FontFamily>
+            </Button>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

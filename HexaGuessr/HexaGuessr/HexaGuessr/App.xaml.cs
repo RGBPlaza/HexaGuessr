@@ -12,9 +12,8 @@ namespace HexaGuessr
 		public App ()
 		{
 			InitializeComponent();
-
             MainPage = new NavigationPage(new Views.MenuPage());
-		}
+        }
 
 		protected override void OnStart ()
 		{

@@ -28,9 +28,9 @@
                 </Label.FontFamily>
             </Label>
 
-            <StackLayout Grid.Row="3" Spacing="8">
+            <StackLayout Grid.Row="3" Spacing="4" HorizontalOptions="Center">
 
-                <Button x:Name="GuessHexButton" Text="Guess Hex" BackgroundColor="#eeeeeeee" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" HeightRequest="52" WidthRequest="256">
+                <Button x:Name="GuessHexButton" Text="Guess Hex" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessHexButton_Clicked">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />
@@ -40,7 +40,7 @@
                     </Button.FontFamily>
                 </Button>
 
-                <Button x:Name="GuessColourButton" Text="Guess Colour" BackgroundColor="#eeeeeeee" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30" HeightRequest="52" WidthRequest="256">
+                <Button x:Name="GuessColorButton" Text="Guess Colour" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessColorButton_Clicked">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />

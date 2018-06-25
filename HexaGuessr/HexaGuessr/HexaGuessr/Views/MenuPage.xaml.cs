@@ -13,80 +13,69 @@ namespace HexaGuessr.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MenuPage : ContentPage
 	{
-        
 		public MenuPage ()
 		{
 			InitializeComponent ();
-            ConstellationsCanvas.SizeChanged += (s, e) => 
+
+            SizeChanged += (s, e) => 
             {
-                Node.canvasWidth = ConstellationsCanvas.Width;
-                Node.canvasHeight = ConstellationsCanvas.Height;
+                Node.canvasWidth = Width;
+                Node.canvasHeight = Height;
             };
+
+            nodes = new List<Node>();
+            nodeBoxes = new Dictionary<string, BoxView>();
+
+            backColor = Color.FromHex("#16a085"); ;
         }
-        
+
+        private Color backColor;
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             
-            InitaliseNodes();
-
-            Device.StartTimer(TimeSpan.FromMilliseconds(1000/60), () => { UpdateLoop(); return true; });
-
-            Color backColor = Color.FromHex("#16a085");
             double hue = backColor.Hue;
-            Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+
+            // Trigger Update Loop
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000 / 60), () =>
             {
-                try
+                if (nodes.Count == nodeCount)
                 {
-                    hue += 0.002;
-                    if (hue >= 1)
-                        hue = 0;
+                    try
+                    {
+                        hue += 0.002;
+                        if (hue >= 1)
+                            hue = 0;
 
-                    backColor = backColor.WithHue(hue);
+                        backColor = backColor.WithHue(hue);
 
-                    ConstellationsCanvas.BackgroundColor = backColor;
-                    GuessHexButton.TextColor = backColor;
-                    GuessColourButton.TextColor = backColor;
+                        ConstellationsCanvas.BackgroundColor = backColor;
+                        GuessHexButton.TextColor = backColor;
+                        GuessColorButton.TextColor = backColor;
+                        
+                        UpdateLoop();
+                    }
+                    catch { }
                 }
-                catch { }
-                return true;
+                else
+                    InitaliseNodes();
+
+                return Navigation.NavigationStack.Last() == this || Device.RuntimePlatform == Device.Android;
             });
-            /*BackgroundHolder.FadeTo(0, 10000);
-
-            int currentColorIndex = 0;
-            Device.StartTimer(TimeSpan.FromSeconds(10), () =>
-            {
-                if (currentColorIndex > 6)
-                    currentColorIndex = 0;
-                else
-                    currentColorIndex++;
-
-
-                if (currentColorIndex % 2 == 0)
-                {
-                    BackgroundColor = colorGenerator.NextColor();
-                    BackgroundHolder.FadeTo(0, 10000);
-                }
-                else
-                {
-                    BackgroundHolder.BackgroundColor = colorGenerator.NextColor();
-                    BackgroundHolder.FadeTo(1, 10000);
-                }
-
-                return true;
-            });*/
 
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            ClearNodes();
         }
         
-        const int nodeCount = 6;
+        int nodeCount = 6;
         float speedMultiplyer = 0.03f;
 
-        List<Node> nodes = new List<Node>();
-        Dictionary<string, BoxView> nodeBoxes = new Dictionary<string, BoxView>();
+        List<Node> nodes;
+        Dictionary<string, BoxView> nodeBoxes;
 
         public void InitaliseNodes()
         {
@@ -114,7 +103,13 @@ namespace HexaGuessr.Views
                     nodeBoxes.Add($"Line_{i}_{j}", line);
                 }
             }
-            
+        }
+
+        public void ClearNodes()
+        {
+            ConstellationsCanvas.Children.Clear();
+            nodes.Clear();
+            nodeBoxes.Clear();
         }
 
         public void UpdateLoop()
@@ -157,18 +152,13 @@ namespace HexaGuessr.Views
 
                             line.HeightRequest = distance;
                             line.Rotation = ((Math.Atan((passingNode.Position.Y - currentNode.Position.Y) / (passingNode.Position.X - currentNode.Position.X)) / Math.PI * 180) + 90);
+                            line.Opacity = (48 / distance) - 0.1;
 
                             AbsoluteLayout.SetLayoutBounds(line, new Rectangle(
                                 ((currentNode.Position.X + passingNode.Position.X + currentNode.Diameter) / 2),
                                 ((currentNode.Position.Y + passingNode.Position.Y - distance + currentNode.Diameter) / 2),
                                 AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize
                             ));
-
-
-                            //line.X2 = passingNode.Position.X + (passingNode.Diameter / 2);
-                            //line.Y2 = passingNode.Position.Y + (passingNode.Diameter / 2);
-
-                            line.Opacity = (48 / distance) - 0.1;
                         }
                         else
                         {
@@ -186,6 +176,16 @@ namespace HexaGuessr.Views
             {
                 System.Diagnostics.Debug.WriteLine(ex);
             }
+        }
+
+        private void GuessHexButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new GuessHexPage());
+        }
+
+        private void GuessColorButton_Clicked(object sender, EventArgs e)
+        {
+
         }
 
     }
