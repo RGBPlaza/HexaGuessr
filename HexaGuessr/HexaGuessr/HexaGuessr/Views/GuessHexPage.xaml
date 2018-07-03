@@ -59,7 +59,7 @@
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>
-                <Entry FontSize="42" MinimumWidthRequest="128" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White">
+                <Entry x:Name="HexEntry" FontSize="42" WidthRequest="256" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White" TextChanged="HexEntry_TextChanged">
                     <Entry.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />

@@ -34,5 +34,22 @@ namespace HexaGuessr.Views
             Navigation.PopAsync();
         }
 
+        private char[] hexDigits = new char[] { 'a', 'b', 'c', 'd', 'e', 'f' };
+
+        private void HexEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            foreach(char c in e.NewTextValue.ToLower())
+            {
+                System.Diagnostics.Debug.WriteLine(c);
+                if (!(char.IsNumber(c) || hexDigits.Contains(c)))
+                {
+                    HexEntry.Text = e.OldTextValue;
+                }
+            }
+
+            if (e.NewTextValue.Length > 6)
+                HexEntry.Text = e.NewTextValue.Substring(0, 6);
+        }
+
     }
 }
