@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace HexaGuessr.Views
             colorGenerator = new RandomColorGenerator();
         }
 
+        Color colorToGuess;
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            Color colorToGuess = colorGenerator.NextColor(0.2);
-            SubmitButton.TextColor = colorToGuess;
+            colorToGuess = colorGenerator.NextColor(0.2);
             BackgroundColor = colorToGuess;
         }
 
@@ -34,21 +35,33 @@ namespace HexaGuessr.Views
             Navigation.PopAsync();
         }
 
-        private char[] hexDigits = new char[] { 'a', 'b', 'c', 'd', 'e', 'f' };
-
         private void HexEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            foreach(char c in e.NewTextValue.ToLower())
+            if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                System.Diagnostics.Debug.WriteLine(c);
-                if (!(char.IsNumber(c) || hexDigits.Contains(c)))
+                if (int.TryParse(e.NewTextValue, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int hex))
+                {
+                    if (e.NewTextValue.Length == 6)
+                    {
+                        SubmitButton.BackgroundColor = Color.FromHex("#eeeeeeee");
+                        SubmitButton.TextColor = colorToGuess;
+                        SubmitButton.IsEnabled = true;
+                        return;
+                    }
+                }
+                else
                 {
                     HexEntry.Text = e.OldTextValue;
                 }
+
+                if (e.NewTextValue.Length > 6)
+                    HexEntry.Text = e.NewTextValue.Substring(0, 6);
             }
 
-            if (e.NewTextValue.Length > 6)
-                HexEntry.Text = e.NewTextValue.Substring(0, 6);
+            SubmitButton.BackgroundColor = Color.FromHex("#44eeeeee");
+            SubmitButton.TextColor = Color.Black;
+            SubmitButton.IsEnabled = false;
+
         }
 
     }

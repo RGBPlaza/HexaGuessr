@@ -6,6 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <Thickness x:Key="TextControlBorderThemeThickness">0</Thickness>
+            <SolidColorBrush x:Key="SystemControlHighlightBaseMediumLowBrush" Color="#dddddd"/>
+            <SolidColorBrush x:Key="SystemControlHighlightBaseHighBrush" Color="#222222"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

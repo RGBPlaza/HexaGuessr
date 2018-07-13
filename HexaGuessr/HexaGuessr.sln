@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGuessr.iOS", "HexaGuess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGuessr.UWP", "HexaGuessr\HexaGuessr.UWP\HexaGuessr.UWP.csproj", "{06AA2696-105F-473A-9CFA-6129B55EF166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGuessr", "HexaGuessr\HexaGuessr\HexaGuessr.csproj", "{E4FC7A3E-4C21-4C74-AD4E-83B9A5CD0DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGuessr", "HexaGuessr\HexaGuessr\HexaGuessr.csproj", "{E4FC7A3E-4C21-4C74-AD4E-83B9A5CD0DD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

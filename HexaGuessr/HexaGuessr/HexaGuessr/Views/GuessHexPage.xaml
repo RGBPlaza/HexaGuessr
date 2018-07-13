@@ -70,7 +70,7 @@
                 </Entry>
             </StackLayout>
 
-            <Button x:Name="SubmitButton" Grid.Row="4" Text="Submit" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center">
+            <Button x:Name="SubmitButton" Grid.Row="4" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" IsEnabled="False">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="Moon-Light" />
