@@ -62,6 +62,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\Moon-Light.otf" />
     <AndroidAsset Include="Assets\MaterialIcons-Regular.ttf" />
+    <AndroidAsset Include="Assets\Moon-Bold.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>

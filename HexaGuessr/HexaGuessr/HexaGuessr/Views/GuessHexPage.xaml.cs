@@ -18,17 +18,24 @@ namespace HexaGuessr.Views
 			InitializeComponent ();
             colorGenerator = new RandomColorGenerator();
         }
-
+        
+        RandomColorGenerator colorGenerator;
         Color colorToGuess;
+
+        private void SetupPage()
+        {
+            colorToGuess = colorGenerator.NextColor(0.2, 0.7);
+            BackgroundColor = colorToGuess;
+            ScoreLabel.Text = PlayerInfo.CurrentScore.ToString();
+            HexEntry.Text = string.Empty;
+        }
+
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            colorToGuess = colorGenerator.NextColor(0.2);
-            BackgroundColor = colorToGuess;
+            SetupPage();
         }
-
-        RandomColorGenerator colorGenerator;
 
         private void BackButton_Clicked(object sender, EventArgs e)
         {

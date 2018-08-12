@@ -102,6 +102,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Assets\Fonts\Moon-Light.otf" />
+    <Content Include="Assets\Fonts\Moon-Bold.otf" />
     <None Include="HexaGuessr.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -22,22 +22,51 @@
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="MaterialIcons-Regular"/>
-                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Reegular"/>
+                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
                         <On Platform="UWP" Value="Segoe MDL2 Assets"/>
                     </OnPlatform>
                 </Button.FontFamily>
                 <Button.Text>
                     <OnPlatform x:TypeArguments="x:String">
                         <!-- These Characters are Back Icons -->
-                        <On Platform="iOS" Value=""/>
-                        <On Platform="Android" Value=""/>
+                        <On Platform="iOS" Value=""/>
+                        <On Platform="Android" Value=""/>
                         <On Platform="UWP" Value=""/>
                     </OnPlatform>
                 </Button.Text>
                 <Button.FontSize>
-                    <OnPlatform x:TypeArguments="x:Double" Android="24"/>
+                    <OnPlatform x:TypeArguments="x:Double" Android="24" Default="19"/>
                 </Button.FontSize>
             </Button>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
+                <Label TextColor="White" FontSize="19">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                    <Label.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <!-- These Characters are Moon Icons -->
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Label.Text>
+                </Label>
+                <Label x:Name="ScoreLabel" TextColor="White" FontSize="19">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
 
             <Label Text="Guess the Hex" Grid.Row="1" FontSize="42" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
                 <Label.FontFamily>

@@ -14,16 +14,20 @@ namespace HexaGuessr.Models
             rand = new Random();
         }
 
-        public Color NextColor(double minimumLuminosity = 0)
+        public Color NextColor(double minimumLuminosity = 0, double maximumLuminosity = 1)
         {
             double red = rand.NextDouble();
             double green = rand.NextDouble();
             double blue = rand.NextDouble();
             
             Color newColor = new Color(red, green, blue);
+
             if (newColor.Luminosity < minimumLuminosity)
                 newColor = newColor.WithLuminosity(minimumLuminosity);
-            return newColor;
+            else if (newColor.Luminosity > maximumLuminosity)
+                newColor = newColor.WithLuminosity(maximumLuminosity);
+
+            return newColor; 
         }
     }
 }
