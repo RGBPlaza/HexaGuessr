@@ -6,7 +6,7 @@ namespace HexaGuessr.Models
 {
     public static class PlayerInfo
     {
-        private static int currentScore = 12;
+        private static int currentScore = 0;
 
         public static int CurrentScore { get => currentScore; set => currentScore = value; }
     }
