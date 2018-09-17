@@ -17,10 +17,10 @@ namespace HexaGuessr.Views
 		public GuessHexPage ()
 		{
 			InitializeComponent ();
-            colorGenerator = new RandomColorGenerator();
+            colorGenerator = new ColorUtility();
         }
         
-        RandomColorGenerator colorGenerator;
+        ColorUtility colorGenerator;
         Color colorToGuess;
 
         private void SetupPage()
@@ -37,7 +37,7 @@ namespace HexaGuessr.Views
             base.OnAppearing();
             SetupPage();
 
-            System.Diagnostics.Debug.WriteLine(string.Format("{0:X},{1:X},{2:X}", (int)(colorToGuess.R * 255), (int)(colorToGuess.G * 255), (int)(colorToGuess.B * 255)));
+            Debug.WriteLine(ColorUtility.ColorToHex(colorToGuess));
 
         }
 
@@ -75,27 +75,11 @@ namespace HexaGuessr.Views
 
         }
 
-        private Color HexToColor(string hexString)
-        {
-            double red   = ((double)int.Parse(hexString.Substring(0,2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
-            double green = ((double)int.Parse(hexString.Substring(2,2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
-            double blue  = ((double)int.Parse(hexString.Substring(4,2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
-            return new Color(red, green, blue);
-        }
-
         private void SubmitButton_Clicked(object sender, EventArgs e)
         {
-            Color guessedColor = HexToColor(HexEntry.Text);
+            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text);
 
-            double hAccuracy = 1 - Math.Abs(colorToGuess.Hue - guessedColor.Hue);
-            double sAccuracy = 1 - Math.Abs(colorToGuess.Saturation - guessedColor.Saturation);
-            double lAccuracy = 1 - Math.Abs(colorToGuess.Luminosity - guessedColor.Luminosity);
-
-            int points = (int)(Math.Ceiling(10 * Math.Pow(hAccuracy,7))) + (int)(Math.Ceiling(10 * Math.Pow(sAccuracy, 7))) + (int)(Math.Ceiling(10 * Math.Pow(lAccuracy, 7)));
-            Debug.WriteLine($"You have scored {points} points.");
-            PlayerInfo.CurrentScore += points;
-
-            ScoreLabel.Text = PlayerInfo.CurrentScore.ToString();
+            Navigation.PushModalAsync(new GuessHexScorePage(colorToGuess, guessedColor));
         }
 
     }

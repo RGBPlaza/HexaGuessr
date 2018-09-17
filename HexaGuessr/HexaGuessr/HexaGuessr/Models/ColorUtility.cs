@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
 namespace HexaGuessr.Models
 {
-    public class RandomColorGenerator
+    public class ColorUtility
     {
         private Random rand;
 
-        public RandomColorGenerator()
+        public ColorUtility()
         {
             rand = new Random();
         }
@@ -29,5 +30,19 @@ namespace HexaGuessr.Models
 
             return newColor; 
         }
+
+        public static Color HexToColor(string hexString)
+        {
+            double red = ((double)int.Parse(hexString.Substring(0, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
+            double green = ((double)int.Parse(hexString.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
+            double blue = ((double)int.Parse(hexString.Substring(4, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture)) / 255;
+            return new Color(red, green, blue);
+        }
+
+        public static string ColorToHex(Color color)
+        {
+            return string.Format("{0:X},{1:X},{2:X}", (int)(color.R * 255), (int)(color.G * 255), (int)(color.B * 255));
+        }
+
     }
 }
