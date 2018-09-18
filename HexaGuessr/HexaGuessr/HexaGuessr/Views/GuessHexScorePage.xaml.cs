@@ -29,7 +29,9 @@ namespace HexaGuessr.Views
             Debug.WriteLine($"You have scored {points} points.");
             PlayerInfo.CurrentScore += points;
 
-            ScoreLabel.Text
+            Color averageColor = new Color((actualColor.R + guessedColor.R) / 2, (actualColor.G + guessedColor.G) / 2, (actualColor.B + guessedColor.B) / 2);
+            ScoreLabel.Text = points.ToString();
+            ScoreStackLayout.BackgroundColor = averageColor;
 		}
 	}
 }

@@ -3,24 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HexaGuessr.Views.GuessHexScorePage">
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout x:Name="ActualStackLayout" Grid.Row="0">
+            <StackLayout x:Name="ActualStackLayout" Grid.Row="0" Grid.RowSpan="2" Margin="0">
                 
             </StackLayout>
 
-            <Label x:Name="ScoreLabel" FontSize="72"/>
-
-            <StackLayout x:Name="GuessStackLayout" Grid.Row="2">
+            <StackLayout x:Name="GuessStackLayout" Grid.Row="1" Grid.RowSpan="2" Margin="0">
                 
+            </StackLayout>
+
+            <StackLayout x:Name="ScoreStackLayout" Grid.Row="1" Padding="16,24,16,16">
+                <Label x:Name="ScoreLabel" FontSize="72" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Bold" />
+                            <On Platform="Android" Value="Moon-Bold.otf#Moon-Bold" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Bold.otf#Moon" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
             </StackLayout>
             
         </Grid>
