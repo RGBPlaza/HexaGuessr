@@ -2,6 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HexaGuessr.Views.GuessHexScorePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -13,24 +30,27 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout x:Name="ActualStackLayout" Grid.Row="0" Grid.RowSpan="2" Margin="0">
-                
+            <BoxView x:Name="ActualBackground" Grid.Row="0" Grid.RowSpan="2"/>
+            <BoxView x:Name="GuessBackground" Grid.Row="1" Grid.RowSpan="2"/>
+
+            <StackLayout x:Name="ActualStackLayout" Grid.Row="0" VerticalOptions="Center">
+                <Label Text="The Code Was" FontSize="36"/>
+                <Label x:Name="ActualLabel" FontSize="64"/>
             </StackLayout>
 
-            <StackLayout x:Name="GuessStackLayout" Grid.Row="1" Grid.RowSpan="2" Margin="0">
-                
-            </StackLayout>
-
-            <StackLayout x:Name="ScoreStackLayout" Grid.Row="1" Padding="16,24,16,16">
-                <Label x:Name="ScoreLabel" FontSize="72" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Bold" />
-                            <On Platform="Android" Value="Moon-Bold.otf#Moon-Bold" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Bold.otf#Moon" />
-                        </OnPlatform>
-                    </Label.FontFamily>
+            <StackLayout x:Name="ScoreStackLayout" Grid.Row="1" Padding="16,24,16,16" BackgroundColor="#EEEEEE">
+                <Label x:Name="ScoreLabel" FontSize="80" TextColor="#111111">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Bold"/>
+                        <On Platform="Android" Value="Moon-Bold.otf#Moon-Bold" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Bold.otf#Moon" />
+                    </OnPlatform>
                 </Label>
+            </StackLayout>
+
+            <StackLayout x:Name="GuessStackLayout" Grid.Row="2" VerticalOptions="Center">
+                <Label Text="You Guessed" FontSize="36"/>
+                <Label x:Name="GuessLabel" FontSize="64"/>
             </StackLayout>
             
         </Grid>

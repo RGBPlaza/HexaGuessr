@@ -18,8 +18,8 @@ namespace HexaGuessr.Views
 		{
 			InitializeComponent ();
 
-            ActualStackLayout.BackgroundColor = actualColor;
-            GuessStackLayout.BackgroundColor = guessedColor;
+            ActualBackground.BackgroundColor = actualColor;
+            GuessBackground.BackgroundColor = guessedColor;
 
             double hAccuracy = 1 - Math.Abs(actualColor.Hue - guessedColor.Hue);
             double sAccuracy = 1 - Math.Abs(actualColor.Saturation - guessedColor.Saturation);
@@ -28,10 +28,12 @@ namespace HexaGuessr.Views
             int points = (int)(Math.Ceiling(10 * Math.Pow(hAccuracy, 7))) + (int)(Math.Ceiling(10 * Math.Pow(sAccuracy, 7))) + (int)(Math.Ceiling(10 * Math.Pow(lAccuracy, 7)));
             Debug.WriteLine($"You have scored {points} points.");
             PlayerInfo.CurrentScore += points;
-
-            Color averageColor = new Color((actualColor.R + guessedColor.R) / 2, (actualColor.G + guessedColor.G) / 2, (actualColor.B + guessedColor.B) / 2);
+            
             ScoreLabel.Text = points.ToString();
-            ScoreStackLayout.BackgroundColor = averageColor;
+
+            ActualLabel.Text = ColorUtility.ColorToHex(actualColor);
+            GuessLabel.Text = ColorUtility.ColorToHex(guessedColor);
+
 		}
 	}
 }
