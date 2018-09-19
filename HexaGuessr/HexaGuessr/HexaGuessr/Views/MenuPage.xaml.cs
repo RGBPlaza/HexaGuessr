@@ -34,7 +34,8 @@ namespace HexaGuessr.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
+            PlayerInfo.CurrentScore = 0;
             double hue = backColor.Hue;
 
             // Trigger Update Loop

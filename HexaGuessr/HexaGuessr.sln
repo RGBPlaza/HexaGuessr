@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGuessr.Android", "HexaGuessr\HexaGuessr.Android\HexaGuessr.Android.csproj", "{BD6501D9-26DB-47F9-B1AC-E6EE7C52A01A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E4FC7A3E-4C21-4C74-AD4E-83B9A5CD0DD8} = {E4FC7A3E-4C21-4C74-AD4E-83B9A5CD0DD8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGuessr.iOS", "HexaGuessr\HexaGuessr.iOS\HexaGuessr.iOS.csproj", "{0DF383C6-52A4-4113-85B7-9C73C0DBD861}"
 EndProject

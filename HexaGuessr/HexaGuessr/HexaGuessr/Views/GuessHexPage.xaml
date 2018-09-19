@@ -29,8 +29,8 @@
                 <Button.Text>
                     <OnPlatform x:TypeArguments="x:String">
                         <!-- These Characters are Back Icons -->
-                        <On Platform="iOS" Value=""/>
-                        <On Platform="Android" Value=""/>
+                        <On Platform="iOS" Value=""/>
+                        <On Platform="Android" Value=""/>
                         <On Platform="UWP" Value=""/>
                     </OnPlatform>
                 </Button.Text>
@@ -51,8 +51,8 @@
                     <Label.Text>
                         <OnPlatform x:TypeArguments="x:String">
                             <!-- These Characters are Moon Icons -->
-                            <On Platform="iOS" Value=""/>
-                            <On Platform="Android" Value=""/>
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
                             <On Platform="UWP" Value=""/>
                         </OnPlatform>
                     </Label.Text>
@@ -88,7 +88,7 @@
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>
-                <Entry x:Name="HexEntry" FontSize="42" WidthRequest="256" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White" TextChanged="HexEntry_TextChanged">
+                <Entry x:Name="HexEntry" FontSize="42" WidthRequest="256" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White" TextChanged="HexEntry_TextChanged" Completed="HexEntry_Enter">
                     <Entry.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />

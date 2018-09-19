@@ -41,7 +41,7 @@ namespace HexaGuessr.Models
 
         public static string ColorToHex(Color color)
         {
-            return string.Format("#{0:X}{1:X}{2:X}", (int)(color.R * 255), (int)(color.G * 255), (int)(color.B * 255));
+            return string.Format("#{0:X2}{1:X2}{2:X2}", (int)(color.R * 255), (int)(color.G * 255), (int)(color.B * 255));
         }
 
     }

@@ -75,11 +75,16 @@ namespace HexaGuessr.Views
 
         }
 
-        private void SubmitButton_Clicked(object sender, EventArgs e)
+        private async void SubmitButton_Clicked(object sender, EventArgs e)
         {
             Color guessedColor = ColorUtility.HexToColor(HexEntry.Text);
+            await Navigation.PushAsync(new GuessHexScorePage(colorToGuess, guessedColor));
+        }
 
-            Navigation.PushModalAsync(new GuessHexScorePage(colorToGuess, guessedColor));
+        private async void HexEntry_Enter(object sender, EventArgs e)
+        {
+            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text);
+            await Navigation.PushAsync(new GuessHexScorePage(colorToGuess, guessedColor));
         }
 
     }
