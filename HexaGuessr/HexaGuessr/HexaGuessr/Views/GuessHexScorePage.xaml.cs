@@ -29,11 +29,22 @@ namespace HexaGuessr.Views
             Debug.WriteLine($"You have scored {points} points.");
             PlayerInfo.CurrentScore += points;
             
-            ScoreLabel.Text = points.ToString();
+            ScoreLabel.Text = $"{points} Points";
 
             ActualLabel.Text = ColorUtility.ColorToHex(actualColor);
             GuessLabel.Text = ColorUtility.ColorToHex(guessedColor);
 
 		}
+
+        private async void NextButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        private async void HomeButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MenuPage());
+        }
+
 	}
 }
