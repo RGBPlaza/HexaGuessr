@@ -57,6 +57,8 @@ namespace HexaGuessr.Views
             CommentLabel.TranslationX = Application.Current.MainPage.Width / 8;
             CommentLabel.Opacity = 0;
 
+            NavStackLayout.Orientation = Device.Idiom == TargetIdiom.Phone ? StackOrientation.Vertical : StackOrientation.Horizontal;
+
 		}
 
         protected override void OnAppearing()
@@ -80,9 +82,9 @@ namespace HexaGuessr.Views
             return base.OnBackButtonPressed();
         }
 
-        private async void HomeButton_Clicked(object sender, EventArgs e)
+        private async void FinishButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            await Navigation.PushAsync(new MarathonFinishPage());
         }
 
 	}

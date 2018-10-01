@@ -5,7 +5,7 @@
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
-        <Grid RowSpacing="8">
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="auto"/>
@@ -15,6 +15,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="256"/>
+                <ColumnDefinition Width="48"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -39,7 +43,7 @@
                 </Button.FontSize>
             </Button>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
+            <StackLayout Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
                 <Label TextColor="White" FontSize="19">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
@@ -68,7 +72,7 @@
                 </Label>
             </StackLayout>
 
-            <Label Text="Guess the Hex" Grid.Row="1" FontSize="42" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+            <Label Text="Guess the Hex" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="42" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
                 <Label.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="Moon-Light" />
@@ -78,28 +82,26 @@
                 </Label.FontFamily>
             </Label>
 
-            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="#" FontSize="42" VerticalTextAlignment="Center" TextColor="White">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Label.FontFamily>
-                </Label>
-                <Entry x:Name="HexEntry" FontSize="42" WidthRequest="256" BackgroundColor="Transparent" TextColor="White" Placeholder="Hex Code" PlaceholderColor="White" TextChanged="HexEntry_TextChanged" Completed="HexEntry_Enter">
-                    <Entry.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Entry.FontFamily>
-                </Entry>
-            </StackLayout>
+            <!--<Label Text="#" Grid.Row="3" Grid.Column="1" FontSize="42" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="White">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Light" />
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>-->
 
-            <Button x:Name="SubmitButton" Grid.Row="4" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" IsEnabled="False" Clicked="SubmitButton_Clicked">
+            <Entry x:Name="HexEntry" Grid.Row="3" Grid.Column="2" FontSize="42" BackgroundColor="Transparent" TextColor="White" Placeholder="Type Here" PlaceholderColor="White" TextChanged="HexEntry_TextChanged" Completed="HexEntry_Enter" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                <Entry.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Moon-Light" />
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                    </OnPlatform>
+                </Entry.FontFamily>
+            </Entry>
+            <Button x:Name="SubmitButton" Grid.Row="4" Grid.Column="2" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" IsEnabled="False" Clicked="SubmitButton_Clicked">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="Moon-Light" />
@@ -108,6 +110,7 @@
                     </OnPlatform>
                 </Button.FontFamily>
             </Button>
+
 
         </Grid>
     </ContentPage.Content>

@@ -62,15 +62,15 @@
             </StackLayout>
 
             <StackLayout x:Name="ScoreStackLayout" Grid.Row="1" Padding="16,24,16,16" BackgroundColor="#eeeeee">
-                <Label x:Name="ScoreLabel" FontSize="64" TextColor="Black"/>
+                <Label x:Name="ScoreLabel" FontSize="48" TextColor="Black"/>
                 <Label x:Name="CommentLabel" FontSize="24" TextColor="Black"/>
             </StackLayout>
 
             <StackLayout x:Name="GuessStackLayout" Grid.Row="2" VerticalOptions="Center">
                 <Label Text="You Guessed" FontSize="24"/>
                 <Label x:Name="GuessLabel" FontSize="48"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Margin="32">
-                    <Button x:Name="HomeButton" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="HomeButton_Clicked">
+                <StackLayout x:Name="NavStackLayout" HorizontalOptions="Center" VerticalOptions="Center" Margin="32">
+                    <Button x:Name="FinishButton" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="FinishButton_Clicked">
                         <Button.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <On Platform="iOS" Value="Moon-Light" />

@@ -50,9 +50,9 @@ namespace HexaGuessr.Views
         {
             if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                if (int.TryParse(e.NewTextValue, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int hex))
+                if (int.TryParse(e.NewTextValue.Replace("#", ""), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int hex))
                 {
-                    if (e.NewTextValue.Length == 6)
+                    if (e.NewTextValue.Length == 7)
                     {
                         SubmitButton.BackgroundColor = Color.FromHex("#eeeeeeee");
                         SubmitButton.TextColor = colorToGuess;
@@ -62,11 +62,15 @@ namespace HexaGuessr.Views
                 }
                 else
                 {
-                    HexEntry.Text = e.OldTextValue;
+                    if (e.NewTextValue != "#")
+                        HexEntry.Text = e.OldTextValue;
                 }
 
-                if (e.NewTextValue.Length > 6)
-                    HexEntry.Text = e.NewTextValue.Substring(0, 6);
+                if (e.NewTextValue[0] != '#')
+                    HexEntry.Text = "#" + e.NewTextValue;
+
+                if (e.NewTextValue.Length > 7)
+                    HexEntry.Text = e.NewTextValue.Substring(0, 7);
             }
 
             SubmitButton.BackgroundColor = Color.FromHex("#44eeeeee");
@@ -77,13 +81,13 @@ namespace HexaGuessr.Views
 
         private async void SubmitButton_Clicked(object sender, EventArgs e)
         {
-            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text);
+            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text.Replace("#", ""));
             await Navigation.PushAsync(new GuessHexScorePage(colorToGuess, guessedColor));
         }
 
         private async void HexEntry_Enter(object sender, EventArgs e)
         {
-            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text);
+            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text.Replace("#", ""));
             await Navigation.PushAsync(new GuessHexScorePage(colorToGuess, guessedColor));
         }
 
