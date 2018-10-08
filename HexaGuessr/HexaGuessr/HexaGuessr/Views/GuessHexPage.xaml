@@ -72,15 +72,26 @@
                 </Label>
             </StackLayout>
 
-            <Label Text="Guess the Hex" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="42" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
-                <Label.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light" />
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                    </OnPlatform>
-                </Label.FontFamily>
-            </Label>
+            <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                <Label Text="Guess the Hex" FontSize="32" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label x:Name="RoundLabel" FontSize="56" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
 
             <!--<Label Text="#" Grid.Row="3" Grid.Column="1" FontSize="42" HorizontalTextAlignment="End" VerticalTextAlignment="Center" TextColor="White">
                 <Label.FontFamily>

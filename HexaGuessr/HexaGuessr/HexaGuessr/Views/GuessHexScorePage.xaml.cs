@@ -14,12 +14,15 @@ namespace HexaGuessr.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GuessHexScorePage : ContentPage
 	{
+        private Color _actualColor;
         public GuessHexScorePage(Color actualColor, Color guessedColor)
         {
             InitializeComponent();
 
             ActualBackground.BackgroundColor = actualColor;
             GuessBackground.BackgroundColor = guessedColor;
+
+            _actualColor = actualColor;
 
             double hAccuracy = 1 - Math.Abs(actualColor.Hue - guessedColor.Hue);
             double sAccuracy = 1 - Math.Abs(actualColor.Saturation - guessedColor.Saturation);
@@ -73,6 +76,7 @@ namespace HexaGuessr.Views
 
         private async void NextButton_Clicked(object sender, EventArgs e)
         {
+            PlayerInfo.CurrentRound++;
             await Navigation.PopAsync();
         }
 
@@ -84,7 +88,7 @@ namespace HexaGuessr.Views
 
         private async void FinishButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MarathonFinishPage());
+            await Navigation.PushAsync(new MarathonFinishPage(GameMode.GuessHex, _actualColor));
         }
 
 	}

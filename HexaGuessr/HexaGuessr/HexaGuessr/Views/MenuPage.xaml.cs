@@ -36,6 +36,8 @@ namespace HexaGuessr.Views
             base.OnAppearing();
 
             PlayerInfo.CurrentScore = 0;
+            PlayerInfo.CurrentRound = 0;
+
             double hue = backColor.Hue;
 
             // Trigger Update Loop

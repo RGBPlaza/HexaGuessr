@@ -25,6 +25,7 @@ namespace HexaGuessr.Views
 
         private void SetupPage()
         {
+            RoundLabel.Text = $"Round {PlayerInfo.CurrentRound}";
             colorToGuess = colorGenerator.NextColor(0.2, 0.7);
             BackgroundColor = colorToGuess;
             ScoreLabel.Text = PlayerInfo.CurrentScore.ToString();

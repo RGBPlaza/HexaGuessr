@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using HexaGuessr.Models;
 using Xamarin.Forms;
 
 namespace HexaGuessr
@@ -17,7 +17,7 @@ namespace HexaGuessr
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
+            PlayerInfo.LoadMarathons();
 		}
 
 		protected override void OnSleep ()
