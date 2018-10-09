@@ -1,7 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HexaGuessr.Views.MarathonFinishPage">
+             x:Class="HexaGuessr.Views.MarathonFinishPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="MoonLabel">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Text">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -9,13 +52,35 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-                
+
+            <StackLayout Grid.Row="1" Grid.Column="1">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label x:Name="TotalLabel" FontSize="48"/>
+                    <Label Style="{StaticResource MoonLabel}" FontSize="32"/>
+                </StackLayout>
+                <Label Text="Total" FontSize="24"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="2">
+                <Label x:Name="RoundsLabel" FontSize="48"/>
+                <Label Text="Rounds" FontSize="24"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="3">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label x:Name="AverageLabel" FontSize="48"/>
+                    <Label Style="{StaticResource MoonLabel}" FontSize="32"/>
+                </StackLayout>
+                <Label Text="Average" FontSize="24"/>
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

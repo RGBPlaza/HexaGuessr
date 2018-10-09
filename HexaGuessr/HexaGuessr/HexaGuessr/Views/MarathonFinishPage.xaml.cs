@@ -15,8 +15,19 @@ namespace HexaGuessr.Views
         public MarathonFinishPage(GameMode gameMode, Color backgroundColor)
         {
             InitializeComponent();
-            Marathon marathon = new Marathon(PlayerInfo.CurrentRound, PlayerInfo.CurrentRound + 1, gameMode);
+            Marathon marathon = new Marathon(PlayerInfo.CurrentScore, PlayerInfo.CurrentRound + 1, gameMode);
             BackgroundColor = backgroundColor;
+
+            TotalLabel.Text = PlayerInfo.CurrentScore.ToString();
+            RoundsLabel.Text = (PlayerInfo.CurrentRound + 1).ToString();
+            int averageScore = PlayerInfo.CurrentScore / (PlayerInfo.CurrentRound + 1);
+            AverageLabel.Text = averageScore.ToString();
 		}
-	}
+
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PopToRootAsync();
+            return base.OnBackButtonPressed();
+        }
+    }
 }

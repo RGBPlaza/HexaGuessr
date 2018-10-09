@@ -37,9 +37,6 @@ namespace HexaGuessr.Views
         {
             base.OnAppearing();
             SetupPage();
-
-            Debug.WriteLine(ColorUtility.ColorToHex(colorToGuess));
-
         }
 
         private void BackButton_Clicked(object sender, EventArgs e)
