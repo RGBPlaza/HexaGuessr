@@ -46,7 +46,7 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
@@ -55,32 +55,51 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Row="1" Grid.Column="1">
+            <StackLayout Grid.Row="1" Grid.Column="0">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label x:Name="TotalLabel" FontSize="48"/>
-                    <Label Style="{StaticResource MoonLabel}" FontSize="32"/>
+                    <Label x:Name="TotalLabel" FontSize="40"/>
+                    <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
                 </StackLayout>
-                <Label Text="Total" FontSize="24"/>
+                <Label Text="Total" FontSize="20"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="1">
+                <Label x:Name="RoundsLabel" FontSize="40"/>
+                <Label Text="Rounds" FontSize="20"/>
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="2">
-                <Label x:Name="RoundsLabel" FontSize="48"/>
-                <Label Text="Rounds" FontSize="24"/>
-            </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="3">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label x:Name="AverageLabel" FontSize="48"/>
-                    <Label Style="{StaticResource MoonLabel}" FontSize="32"/>
+                    <Label x:Name="AverageLabel" FontSize="40"/>
+                    <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
                 </StackLayout>
-                <Label Text="Average" FontSize="24"/>
+                <Label Text="Average" FontSize="20"/>
             </StackLayout>
 
+            <ListView x:Name="HistoryListView" Grid.Row="2" Grid.ColumnSpan="3">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Score}"/>
+                                <Label Grid.Column="1" Text="{Binding Rounds}"/>
+                                <Label Grid.Column="2" Text="{Binding MeanScore}"/>
+                                <Label Grid.Column="3" Text="{Binding Date}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

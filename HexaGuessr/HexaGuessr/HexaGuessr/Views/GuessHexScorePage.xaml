@@ -24,8 +24,9 @@
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -33,7 +34,7 @@
             </Grid.ColumnDefinitions>
 
             <BoxView x:Name="ActualBackground" Grid.Row="0" Grid.RowSpan="2"/>
-            <BoxView x:Name="GuessBackground" Grid.Row="1" Grid.RowSpan="2"/>
+            <BoxView x:Name="GuessBackground" Grid.Row="1" Grid.RowSpan="3"/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
                 <Label TextColor="White" FontSize="19">
@@ -66,29 +67,30 @@
                 <Label x:Name="CommentLabel" FontSize="24" TextColor="Black"/>
             </StackLayout>
 
-            <StackLayout x:Name="GuessStackLayout" Grid.Row="2" VerticalOptions="Center">
+            <StackLayout x:Name="GuessStackLayout" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="End">
                 <Label Text="You Guessed" FontSize="24"/>
                 <Label x:Name="GuessLabel" FontSize="48"/>
-                <StackLayout x:Name="NavStackLayout" HorizontalOptions="Center" VerticalOptions="Center" Margin="32">
-                    <Button x:Name="FinishButton" Text="Finish" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="FinishButton_Clicked">
-                        <Button.FontFamily>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="iOS" Value="Moon-Light" />
-                                <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                                <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                            </OnPlatform>
-                        </Button.FontFamily>
-                    </Button>
-                    <Button x:Name="NextButton" Text="Next Round" BackgroundColor="#eeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="NextButton_Clicked">
-                        <Button.FontFamily>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="iOS" Value="Moon-Light" />
-                                <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                                <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                            </OnPlatform>
-                        </Button.FontFamily>
-                    </Button>
-                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout x:Name="NavStackLayout" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Start" Padding="8" Spacing="8">
+                <Button x:Name="FinishButton" Text="Finish" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="FinishButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+                <Button x:Name="NextButton" Text="Next Round" BackgroundColor="#eeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="NextButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
             </StackLayout>
             
         </Grid>
