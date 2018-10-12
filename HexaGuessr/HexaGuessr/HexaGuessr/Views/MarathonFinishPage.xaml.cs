@@ -23,8 +23,8 @@ namespace HexaGuessr.Views
             int averageScore = PlayerInfo.CurrentScore / (PlayerInfo.CurrentRound + 1);
             AverageLabel.Text = averageScore.ToString();
 
-            //HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode);
-            //PlayerInfo.Marathons.Add(marathon);
+            PlayerInfo.Marathons.Add(marathon);
+            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).Take(5);
             PlayerInfo.SaveMarathons();
 
 		}

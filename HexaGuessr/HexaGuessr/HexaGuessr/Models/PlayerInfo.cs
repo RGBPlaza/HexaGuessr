@@ -10,11 +10,10 @@ namespace HexaGuessr.Models
     {
         private static int currentScore;
         private static int currentRound;
-        private static List<Marathon> marathons;
 
         public static int CurrentScore { get => currentScore; set => currentScore = value; }
         public static int CurrentRound { get => currentRound; set => currentRound = value; }
-        public static List<Marathon> Marathons { get => marathons; set => marathons = value; }
+        public static List<Marathon> Marathons { get; set; }
 
         const string fileName = "marathons.json";
         public static void LoadMarathons()
@@ -23,18 +22,19 @@ namespace HexaGuessr.Models
             if (File.Exists(filePath))
             {
                 string marathonsJson = File.ReadAllText(filePath);
-                marathons = JsonConvert.DeserializeObject<List<Marathon>>(marathonsJson);
+                Marathons = string.IsNullOrEmpty(marathonsJson) ? new List<Marathon>() : JsonConvert.DeserializeObject<List<Marathon>>(marathonsJson);
+                System.Diagnostics.Debug.WriteLine(Marathons.Count);
             }
             else
             {
                 File.Create(filePath);
-                marathons = new List<Marathon>();
+                Marathons = new List<Marathon>();
             }
         }
         public static void SaveMarathons()
         {
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
-            string marathonsJson = JsonConvert.SerializeObject(marathons);
+            string marathonsJson = JsonConvert.SerializeObject(Marathons);
             File.WriteAllText(filePath, marathonsJson);
         }
 
