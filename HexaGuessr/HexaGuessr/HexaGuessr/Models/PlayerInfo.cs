@@ -22,7 +22,7 @@ namespace HexaGuessr.Models
             if (File.Exists(filePath))
             {
                 string marathonsJson = File.ReadAllText(filePath);
-                Marathons = string.IsNullOrEmpty(marathonsJson) ? new List<Marathon>() : JsonConvert.DeserializeObject<List<Marathon>>(marathonsJson);
+                Marathons = string.IsNullOrWhiteSpace(marathonsJson) ? new List<Marathon>() : JsonConvert.DeserializeObject<List<Marathon>>(marathonsJson);
                 System.Diagnostics.Debug.WriteLine(Marathons.Count);
             }
             else
