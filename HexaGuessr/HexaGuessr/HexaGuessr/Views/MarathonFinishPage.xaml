@@ -50,6 +50,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -59,6 +61,8 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
+
+            <Label x:Name="MessageLabel" Grid.Row="0" Grid.ColumnSpan="3" FontSize="24"/>
 
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
@@ -79,21 +83,49 @@
                 <Label Text="Average" FontSize="20"/>
             </StackLayout>
 
-            <ListView x:Name="HistoryListView" Grid.Row="2" Grid.ColumnSpan="3">
+            <Label Grid.Row="2" Grid.ColumnSpan="3" Text="Previous Marathons" FontSize="24"/>
+
+            <Grid Grid.Row="3" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Text="Total Score"/>
+                <Label Grid.Column="1" Text="Rounds"/>
+                <Label Grid.Column="2" Text="Average Score"/>
+                <Label Grid.Column="3" Text="Date"/>
+
+            </Grid>
+            <ListView x:Name="HistoryListView" Grid.Row="4" Grid.ColumnSpan="3">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="48"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Score}"/>
+                                <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label Text="{Binding Score}"/>
+                                    <Label Style="{StaticResource MoonLabel}"/>
+                                </StackLayout>
                                 <Label Grid.Column="1" Text="{Binding Rounds}"/>
-                                <Label Grid.Column="2" Text="{Binding MeanScore}"/>
-                                <Label Grid.Column="3" Text="{Binding Date}"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label Text="{Binding MeanScore}"/>
+                                    <Label Style="{StaticResource MoonLabel}"/>
+                                </StackLayout>
+                                <Label Grid.Column="3" Text="{Binding DateString}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

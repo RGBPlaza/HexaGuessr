@@ -24,7 +24,7 @@ namespace HexaGuessr.Views
             AverageLabel.Text = averageScore.ToString();
 
             PlayerInfo.Marathons.Add(marathon);
-            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).Take(5);
+            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.Score).Take(5);
             System.Diagnostics.Debug.WriteLine(marathon.Score);
             PlayerInfo.SaveMarathons();
 

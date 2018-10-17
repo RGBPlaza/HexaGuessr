@@ -24,7 +24,7 @@ namespace HexaGuessr.Models
         public int MeanScore { get => _score / _rounds; }
 
         public GameMode GameMode { get => _gameMode; }
-        public DateTime Date { get => _date; }
+        public string DateString { get => _date.ToShortDateString(); }
     }
 
     public enum GameMode
