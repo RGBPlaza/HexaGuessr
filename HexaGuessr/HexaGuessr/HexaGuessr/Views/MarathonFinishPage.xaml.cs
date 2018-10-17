@@ -42,7 +42,7 @@ namespace HexaGuessr.Views
                 CommentLabel.Text = comments[7];
 
             PlayerInfo.Marathons.Add(marathon);
-            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.MeanScore).Take(5);
+            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.Score).Take(5);
             System.Diagnostics.Debug.WriteLine(marathon.MeanScore);
             PlayerInfo.SaveMarathons();
 
@@ -53,5 +53,11 @@ namespace HexaGuessr.Views
             Navigation.PopToRootAsync();
             return base.OnBackButtonPressed();
         }
+
+        private void HomeButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync();
+        }
+
     }
 }
