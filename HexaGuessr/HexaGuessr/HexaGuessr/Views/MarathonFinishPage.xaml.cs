@@ -23,9 +23,27 @@ namespace HexaGuessr.Views
             int averageScore = PlayerInfo.CurrentScore / (PlayerInfo.CurrentRound + 1);
             AverageLabel.Text = averageScore.ToString();
 
+            string[] comments = new string[8] { "Oops!", "Better luck next time!", "Not bad!", "Nice!", "Nifty!", "Superb!", "Rad!", "That's some fine craftsmanship my man!" };
+            if (marathon.MeanScore <= 5)
+                CommentLabel.Text = comments[0];
+            else if (marathon.MeanScore <= 12)
+                CommentLabel.Text = comments[1]; 
+            else if (marathon.MeanScore <= 18)
+                CommentLabel.Text = comments[2];
+            else if (marathon.MeanScore <= 22)
+                CommentLabel.Text = comments[3];
+            else if (marathon.MeanScore <= 25)
+                CommentLabel.Text = comments[4];
+            else if (marathon.MeanScore <= 27)
+                CommentLabel.Text = comments[5];
+            else if (marathon.MeanScore <= 29)
+                CommentLabel.Text = comments[6];
+            else
+                CommentLabel.Text = comments[7];
+
             PlayerInfo.Marathons.Add(marathon);
-            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.Score).Take(5);
-            System.Diagnostics.Debug.WriteLine(marathon.Score);
+            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.MeanScore).Take(5);
+            System.Diagnostics.Debug.WriteLine(marathon.MeanScore);
             PlayerInfo.SaveMarathons();
 
 		}

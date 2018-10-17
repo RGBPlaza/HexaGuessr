@@ -62,7 +62,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="MessageLabel" Grid.Row="0" Grid.ColumnSpan="3" FontSize="24"/>
+            <Label x:Name="CommentLabel" Grid.Row="0" Grid.ColumnSpan="3" FontSize="24"/>
 
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
