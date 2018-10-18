@@ -26,7 +26,9 @@ namespace HexaGuessr.Views
             nodes = new List<Node>();
             nodeBoxes = new Dictionary<string, BoxView>();
 
-            backColor = Color.FromHex("#16a085"); ;
+            backColor = Color.FromHex("#16a085");
+            if (Device.RuntimePlatform == Device.Android)
+                GuessColorButton.Margin = new Thickness(0, -8, 0, 0);
         }
 
         private Color backColor;

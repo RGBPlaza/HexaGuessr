@@ -61,6 +61,8 @@ namespace HexaGuessr.Views
             CommentLabel.Opacity = 0;
 
             NavStackLayout.Orientation = Device.Idiom == TargetIdiom.Phone ? StackOrientation.Vertical : StackOrientation.Horizontal;
+            if (Device.RuntimePlatform == Device.Android)
+                NextButton.Margin = new Thickness(0, -4, 0, 0);
 
 		}
 
