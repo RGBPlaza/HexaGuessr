@@ -48,7 +48,7 @@
     <ContentPage.Content>
         <Grid Padding="16,48" RowSpacing="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="48"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="48"/>
@@ -66,18 +66,18 @@
             
             <StackLayout Grid.Row="1" Grid.Column="0">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label x:Name="TotalLabel" FontSize="40"/>
+                    <Label x:Name="TotalLabel" FontSize="40" Opacity="0"/>
                     <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
                 </StackLayout>
                 <Label Text="Total" FontSize="20"/>
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="1">
-                <Label x:Name="RoundsLabel" FontSize="40"/>
+                <Label x:Name="RoundsLabel" FontSize="40" Opacity="0"/>
                 <Label Text="Rounds" FontSize="20"/>
             </StackLayout>
             <StackLayout Grid.Row="1" Grid.Column="2">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label x:Name="AverageLabel" FontSize="40"/>
+                    <Label x:Name="AverageLabel" FontSize="40" Opacity="0"/>
                     <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
                 </StackLayout>
                 <Label Text="Average" FontSize="20"/>

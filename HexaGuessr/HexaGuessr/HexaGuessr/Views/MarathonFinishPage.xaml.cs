@@ -18,11 +18,6 @@ namespace HexaGuessr.Views
             Marathon marathon = new Marathon(PlayerInfo.CurrentScore, PlayerInfo.CurrentRound + 1, gameMode);
             BackgroundColor = backgroundColor;
 
-            TotalLabel.Text = PlayerInfo.CurrentScore.ToString();
-            RoundsLabel.Text = (PlayerInfo.CurrentRound + 1).ToString();
-            int averageScore = PlayerInfo.CurrentScore / (PlayerInfo.CurrentRound + 1);
-            AverageLabel.Text = averageScore.ToString();
-
             string[] comments = new string[8] { "Oops!", "Better luck next time!", "Not bad!", "Nice!", "Nifty!", "Superb!", "Rad!", "That's some fine craftsmanship my man!" };
             if (marathon.MeanScore <= 5)
                 CommentLabel.Text = comments[0];
@@ -47,6 +42,37 @@ namespace HexaGuessr.Views
             PlayerInfo.SaveMarathons();
 
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            int averageScore = PlayerInfo.CurrentScore / (PlayerInfo.CurrentRound + 1);
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000 / PlayerInfo.CurrentScore), () =>
+            {
+                TotalLabel.Text = i.ToString();
+                i++;
+                return i <= PlayerInfo.CurrentScore;
+            });
+            TotalLabel.FadeTo(1, 1000);
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000 / (PlayerInfo.CurrentRound + 1)), () =>
+            {
+                RoundsLabel.Text = j.ToString();
+                j++;
+                return j <= PlayerInfo.CurrentRound + 1;
+            });
+            RoundsLabel.FadeTo(1, 1000);
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000 / averageScore), () =>
+            {
+                AverageLabel.Text = k.ToString();
+                k++;
+                return k <= averageScore;
+            });
+            AverageLabel.FadeTo(1, 1000);
+        }
 
         protected override bool OnBackButtonPressed()
         {
