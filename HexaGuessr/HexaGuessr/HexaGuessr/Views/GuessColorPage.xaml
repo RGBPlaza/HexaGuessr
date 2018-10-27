@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HexaGuessr.Views.GuessHexPage"
-             NavigationPage.HasNavigationBar="False"
-             NavigationPage.HasBackButton="False">
+             x:Class="HexaGuessr.Views.GuessColorPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid RowSpacing="0" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -73,7 +72,7 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
-                <Label Text="Guess the Hex" FontSize="32" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                <Label x:Name="HexLabel" FontSize="32" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />
@@ -93,16 +92,7 @@
                 </Label>
             </StackLayout>
 
-            <Entry x:Name="HexEntry" Grid.Row="3" Grid.Column="2" FontSize="42" BackgroundColor="Transparent" TextColor="White" Placeholder="Type Here" PlaceholderColor="White" TextChanged="HexEntry_TextChanged" Completed="HexEntry_Enter" VerticalOptions="Center" HorizontalTextAlignment="Center">
-                <Entry.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light" />
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                    </OnPlatform>
-                </Entry.FontFamily>
-            </Entry>
-            <Button x:Name="SubmitButton" Grid.Row="4" Grid.Column="2" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" IsEnabled="False" Clicked="SubmitButton_Clicked">
+            <Button x:Name="SubmitButton" Grid.Row="3" Grid.Column="2" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" IsEnabled="False" Clicked="SubmitButton_Clicked">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="Moon-Light" />
@@ -111,8 +101,7 @@
                     </OnPlatform>
                 </Button.FontFamily>
             </Button>
-
-
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

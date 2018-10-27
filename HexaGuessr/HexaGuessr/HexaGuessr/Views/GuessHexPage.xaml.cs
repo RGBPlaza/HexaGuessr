@@ -32,7 +32,6 @@ namespace HexaGuessr.Views
             HexEntry.Text = string.Empty;
         }
 
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

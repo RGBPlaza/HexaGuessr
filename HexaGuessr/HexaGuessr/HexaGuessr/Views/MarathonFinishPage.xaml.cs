@@ -77,12 +77,17 @@ namespace HexaGuessr.Views
         protected override bool OnBackButtonPressed()
         {
             Navigation.PopToRootAsync();
-            return base.OnBackButtonPressed();
+            return true;
         }
 
         private void HomeButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopToRootAsync();
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            HistoryListView.SelectedItem = null;
         }
 
     }

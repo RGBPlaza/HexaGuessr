@@ -190,7 +190,7 @@ namespace HexaGuessr.Views
 
         private void GuessColorButton_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new GuessColorPage());
         }
 
     }

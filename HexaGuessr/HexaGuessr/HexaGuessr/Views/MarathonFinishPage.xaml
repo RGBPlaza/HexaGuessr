@@ -19,7 +19,6 @@
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
-
             <Style TargetType="Label" x:Key="MoonLabel">
                 <Setter Property="FontFamily">
                     <Setter.Value>
@@ -48,10 +47,9 @@
     <ContentPage.Content>
         <Grid Padding="16,48" RowSpacing="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
-                <RowDefinition Height="48"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="48"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="48"/>
@@ -63,19 +61,19 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="CommentLabel" Grid.Row="0" Grid.ColumnSpan="3" FontSize="28"/>
-            
-            <StackLayout Grid.Row="1" Grid.Column="0">
+
+            <StackLayout Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Margin="0,8,0,24">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Label x:Name="TotalLabel" FontSize="40" Opacity="0"/>
                     <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
                 </StackLayout>
                 <Label Text="Total" FontSize="20"/>
             </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="1">
+            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Margin="0,8,0,24">
                 <Label x:Name="RoundsLabel" FontSize="40" Opacity="0"/>
                 <Label Text="Rounds" FontSize="20"/>
             </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="2">
+            <StackLayout Grid.Row="1" Grid.Column="2" VerticalOptions="Center" Margin="0,8,0,24">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Label x:Name="AverageLabel" FontSize="40" Opacity="0"/>
                     <Label Style="{StaticResource MoonLabel}" FontSize="28"/>
@@ -83,9 +81,9 @@
                 <Label Text="Average" FontSize="20"/>
             </StackLayout>
 
-            <Label Grid.Row="3" Grid.ColumnSpan="3" Text="Previous Marathons" FontSize="28"/>
+            <Label Grid.Row="2" Grid.ColumnSpan="3" Text="Previous Marathons" FontSize="28"/>
 
-            <Grid Grid.Row="4" Grid.ColumnSpan="3">
+            <Grid Grid.Row="3" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="48"/>
                 </Grid.RowDefinitions>
@@ -95,14 +93,12 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
                 <Label Grid.Column="0" Text="Total" FontSize="14"/>
                 <Label Grid.Column="1" Text="Rounds" FontSize="14"/>
                 <Label Grid.Column="2" Text="Average" FontSize="14"/>
                 <Label Grid.Column="3" Text="Date" FontSize="14"/>
-
             </Grid>
-            <ListView x:Name="HistoryListView" Grid.Row="5" Grid.ColumnSpan="3">
+            <ListView x:Name="HistoryListView" Grid.Row="4" Grid.ColumnSpan="3" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -132,7 +128,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="HomeButton" Grid.Row="6" Grid.ColumnSpan="3" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="HomeButton_Clicked">
+            <Button x:Name="HomeButton" Grid.Row="5" Grid.ColumnSpan="3" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="HomeButton_Clicked">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="Moon-Light" />

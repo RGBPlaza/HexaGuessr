@@ -85,7 +85,7 @@ namespace HexaGuessr.Views
         protected override bool OnBackButtonPressed()
         {
             Navigation.PopToRootAsync();
-            return base.OnBackButtonPressed();
+            return true;
         }
 
         private async void FinishButton_Clicked(object sender, EventArgs e)
