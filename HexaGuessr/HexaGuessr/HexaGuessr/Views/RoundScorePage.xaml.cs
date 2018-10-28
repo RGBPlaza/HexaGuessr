@@ -12,10 +12,11 @@ using Xamarin.Forms.Xaml;
 namespace HexaGuessr.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GuessHexScorePage : ContentPage
+	public partial class RoundScorePage : ContentPage
 	{
         private Color _actualColor;
-        public GuessHexScorePage(Color actualColor, Color guessedColor)
+        private Random rand;
+        public RoundScorePage(Color actualColor, Color guessedColor)
         {
             InitializeComponent();
 
@@ -23,6 +24,7 @@ namespace HexaGuessr.Views
             GuessBackground.BackgroundColor = guessedColor;
 
             _actualColor = actualColor;
+            rand = new Random();
 
             double hAccuracy = 1 - Math.Abs(actualColor.Hue - guessedColor.Hue);
             double sAccuracy = 1 - Math.Abs(actualColor.Saturation - guessedColor.Saturation);
@@ -79,6 +81,14 @@ namespace HexaGuessr.Views
         private async void NextButton_Clicked(object sender, EventArgs e)
         {
             PlayerInfo.CurrentRound++;
+            if(PlayerInfo.CurrentGameMode == GameMode.Mixed)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                if (rand.Next(0, 10) % 2 == 0)
+                    Navigation.InsertPageBefore(new GuessHexPage(), this);
+                else
+                    Navigation.InsertPageBefore(new GuessColorPage(), this);
+            }
             await Navigation.PopAsync();
         }
 
@@ -90,7 +100,7 @@ namespace HexaGuessr.Views
 
         private async void FinishButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MarathonFinishPage(GameMode.GuessHex, _actualColor));
+            await Navigation.PushAsync(new MarathonFinishPage(_actualColor));
         }
 
 	}

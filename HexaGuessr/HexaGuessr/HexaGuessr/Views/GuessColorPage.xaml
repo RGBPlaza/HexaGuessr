@@ -11,7 +11,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="64"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -21,6 +21,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+            <BoxView x:Name="ColorDisplayBoxView" Grid.RowSpan="5" Grid.ColumnSpan="5">
+                <BoxView.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            
             <Button x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="48" HeightRequest="48" BorderWidth="0" TextColor="White" BackgroundColor="Transparent" Clicked="BackButton_Clicked">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
@@ -42,7 +48,7 @@
                 </Button.FontSize>
             </Button>
 
-            <StackLayout Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
+            <StackLayout Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="8">
                 <Label TextColor="White" FontSize="19">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
@@ -72,7 +78,7 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
-                <Label x:Name="HexLabel" FontSize="32" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                <Label x:Name="RoundLabel" FontSize="44" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />
@@ -81,7 +87,7 @@
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>
-                <Label x:Name="RoundLabel" FontSize="56" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
+                <Label x:Name="HexLabel" FontSize="48" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="Moon-Light" />
@@ -91,16 +97,27 @@
                     </Label.FontFamily>
                 </Label>
             </StackLayout>
-
-            <Button x:Name="SubmitButton" Grid.Row="3" Grid.Column="2" Text="Submit" BackgroundColor="#44eeeeee" TextColor="Black" FontSize="26" IsEnabled="False" Clicked="SubmitButton_Clicked">
-                <Button.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light" />
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                    </OnPlatform>
-                </Button.FontFamily>
-            </Button>
+            
+            <StackLayout Grid.Row="3" Grid.Column="2">
+                <Button x:Name="SelectHueButton" Text="Select Hue" FontSize="26" Clicked="SelectHueButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+                <Button x:Name="SubmitButton" Text="Submit" FontSize="26" Clicked="SubmitButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+            </StackLayout>
             
         </Grid>
     </ContentPage.Content>

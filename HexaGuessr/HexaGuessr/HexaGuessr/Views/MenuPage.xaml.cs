@@ -29,9 +29,12 @@ namespace HexaGuessr.Views
             backColor = Color.FromHex("#16a085");
             if (Device.RuntimePlatform == Device.Android)
                 GuessColorButton.Margin = new Thickness(0, -8, 0, 0);
+
+            rand = new Random();
         }
 
         private Color backColor;
+        private Random rand;
 
         protected override void OnAppearing()
         {
@@ -39,6 +42,8 @@ namespace HexaGuessr.Views
 
             PlayerInfo.CurrentScore = 0;
             PlayerInfo.CurrentRound = 0;
+
+            TotalScoreLabel.Text = PlayerInfo.TotalMoons.ToString();
 
             double hue = backColor.Hue;
 
@@ -58,6 +63,8 @@ namespace HexaGuessr.Views
                         ConstellationsCanvas.BackgroundColor = backColor;
                         GuessHexButton.TextColor = backColor;
                         GuessColorButton.TextColor = backColor;
+                        MixedMarathonButton.TextColor = backColor;
+                        LeaderBoardButton.TextColor = backColor;
                         
                         UpdateLoop();
                     }
@@ -132,7 +139,6 @@ namespace HexaGuessr.Views
                         AbsoluteLayout.SetLayoutBounds(nodeBoxView, new Rectangle(currentNode.Position, new Size(AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize)));
                     }
 
-
                     for (int j = i + 1; j < nodeCount; j++)
                     {
                         Node passingNode = nodes[j];
@@ -183,14 +189,30 @@ namespace HexaGuessr.Views
             }
         }
 
-        private void GuessHexButton_Clicked(object sender, EventArgs e)
+        private async void GuessHexButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GuessHexPage());
+            PlayerInfo.CurrentGameMode = GameMode.GuessHex;
+            await Navigation.PushAsync(new GuessHexPage());
         }
 
-        private void GuessColorButton_Clicked(object sender, EventArgs e)
+        private async void GuessColorButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GuessColorPage());
+            PlayerInfo.CurrentGameMode = GameMode.GuessColor;
+            await Navigation.PushAsync(new GuessColorPage());
+        }
+        
+        private async void MixedMarathonButton_Clicked(object sender, EventArgs e)
+        {
+            PlayerInfo.CurrentGameMode = GameMode.Mixed;
+            if (rand.Next(0, 10) % 2 == 0)
+                await Navigation.PushAsync(new GuessHexPage());
+            else
+                await Navigation.PushAsync(new GuessColorPage());
+        }
+
+        private async void LeaderBoardButton_Clicked(object sender, EventArgs e)
+        {
+
         }
 
     }

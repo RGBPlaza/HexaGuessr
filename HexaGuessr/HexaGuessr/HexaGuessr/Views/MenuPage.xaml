@@ -11,45 +11,98 @@
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <AbsoluteLayout x:Name="ConstellationsCanvas" Grid.RowSpan="5"/>
+            <AbsoluteLayout x:Name="ConstellationsCanvas" Grid.RowSpan="6"/>
 
             <Label Text="HexaGuessr" Grid.Row="1" FontSize="42" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand">
                 <Label.FontFamily>
                     <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light" />
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        <On Platform="iOS" Value="Moon-Light"/>
+                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
+                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
                     </OnPlatform>
                 </Label.FontFamily>
             </Label>
 
             <StackLayout Grid.Row="3" Spacing="4" HorizontalOptions="Center">
-
                 <Button x:Name="GuessHexButton" Text="Guess Hex" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessHexButton_Clicked">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                            <On Platform="iOS" Value="Moon-Light"/>
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
                         </OnPlatform>
                     </Button.FontFamily>
                 </Button>
-
                 <Button x:Name="GuessColorButton" Text="Guess Color" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessColorButton_Clicked">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                            <On Platform="iOS" Value="Moon-Light"/>
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
                         </OnPlatform>
                     </Button.FontFamily>
                 </Button>
-                
+                <Button x:Name="MixedMarathonButton" Text="Mixed Marathon" BackgroundColor="#eeeeeeee" FontSize="24" HeightRequest="48" WidthRequest="256" Clicked="MixedMarathonButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light"/>
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End" Padding="16,8" Spacing="16">
+                <StackLayout Grid.Column="4" Orientation="Horizontal" Spacing="8" VerticalOptions="Center">
+                    <Label TextColor="White" FontSize="19">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                                <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                                <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                        <Label.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value=""/>
+                                <On Platform="Android" Value=""/>
+                                <On Platform="UWP" Value=""/>
+                            </OnPlatform>
+                        </Label.Text>
+                    </Label>
+                    <Label x:Name="TotalScoreLabel" TextColor="White" FontSize="19">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="Moon-Light" />
+                                <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                                <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                </StackLayout>
+                <Button x:Name="LeaderBoardButton" BackgroundColor="#eeeeeeee" FontSize="20" HeightRequest="48" WidthRequest="48" Clicked="LeaderBoardButton_Clicked">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Button.FontFamily>
+                    <Button.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Button.Text>
+                </Button>
             </StackLayout>
 
         </Grid>

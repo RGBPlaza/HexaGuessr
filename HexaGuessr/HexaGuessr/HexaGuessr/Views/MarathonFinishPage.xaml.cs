@@ -12,10 +12,10 @@ namespace HexaGuessr.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MarathonFinishPage : ContentPage
 	{
-        public MarathonFinishPage(GameMode gameMode, Color backgroundColor)
+        public MarathonFinishPage(Color backgroundColor)
         {
             InitializeComponent();
-            Marathon marathon = new Marathon(PlayerInfo.CurrentScore, PlayerInfo.CurrentRound + 1, gameMode);
+            Marathon marathon = new Marathon(PlayerInfo.CurrentScore, PlayerInfo.CurrentRound + 1, PlayerInfo.CurrentGameMode);
             BackgroundColor = backgroundColor;
 
             string[] comments = new string[8] { "Oops!", "Better luck next time!", "Not bad!", "Nice!", "Nifty!", "Superb!", "Rad!", "That's some fine craftsmanship my man!" };
@@ -37,10 +37,9 @@ namespace HexaGuessr.Views
                 CommentLabel.Text = comments[7];
 
             PlayerInfo.Marathons.Add(marathon);
-            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == gameMode).OrderByDescending(o => o.Score).Take(5);
+            HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == PlayerInfo.CurrentGameMode).OrderByDescending(o => o.Score).Take(5);
             System.Diagnostics.Debug.WriteLine(marathon.MeanScore);
             PlayerInfo.SaveMarathons();
-
 		}
 
         protected override void OnAppearing()

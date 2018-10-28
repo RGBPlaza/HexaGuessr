@@ -16,7 +16,7 @@ namespace HexaGuessr.Models
             _score = score;
             _rounds = rounds;
             _date = DateTime.Now;
-            _gameMode = GameMode;
+            _gameMode = gameMode;
         }
 
         public int Score { get => _score; set => _score = value; }
@@ -30,7 +30,8 @@ namespace HexaGuessr.Models
     public enum GameMode
     {
         GuessHex,
-        GuessColour
+        GuessColor,
+        Mixed
     }
 
 }

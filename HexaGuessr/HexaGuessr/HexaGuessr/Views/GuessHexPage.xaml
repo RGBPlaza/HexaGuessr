@@ -43,7 +43,7 @@
                 </Button.FontSize>
             </Button>
 
-            <StackLayout Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="12">
+            <StackLayout Grid.Column="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="8">
                 <Label TextColor="White" FontSize="19">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
