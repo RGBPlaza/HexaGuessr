@@ -58,8 +58,8 @@ namespace HexaGuessr.Views
             SelectHueButton.BackgroundColor = Color.FromHex("#eeeeeeee");
 
             SubmitButton.IsEnabled = false;
-            SubmitButton.TextColor = Color.Black;
-            SubmitButton.BackgroundColor = Color.FromHex("#44eeeeee");
+            SubmitButton.TextColor = Color.FromHex("#66eeeeee");
+            SubmitButton.BackgroundColor = Color.FromHex("#66eeeeee");
         }
 
         protected override void OnAppearing()
@@ -78,8 +78,8 @@ namespace HexaGuessr.Views
             hueSelected = true;
 
             SelectHueButton.IsEnabled = false;
-            SelectHueButton.TextColor = Color.Black;
-            SelectHueButton.BackgroundColor = Color.FromHex("#44eeeeee");
+            SelectHueButton.TextColor = Color.FromHex("#66eeeeee");
+            SelectHueButton.BackgroundColor = Color.FromHex("#66eeeeee");
 
             SubmitButton.IsEnabled = true;
             SubmitButton.TextColor = guessingColor;

@@ -27,15 +27,11 @@ namespace HexaGuessr.Views
             nodeBoxes = new Dictionary<string, BoxView>();
 
             backColor = Color.FromHex("#16a085");
-            if (Device.RuntimePlatform == Device.Android)
-                GuessColorButton.Margin = new Thickness(0, -8, 0, 0);
-
-            rand = new Random();
         }
 
         private Color backColor;
-        private Random rand;
-
+        private static Random rand = new Random();
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -44,6 +40,16 @@ namespace HexaGuessr.Views
             PlayerInfo.CurrentRound = 0;
 
             TotalScoreLabel.Text = PlayerInfo.TotalMoons.ToString();
+            if(PlayerInfo.TotalMoons >= 200 && !GuessColorButton.IsVisible)
+            {
+                GuessColorButton.IsVisible = true;
+                GuessColorLock.IsVisible = false;
+            }
+            if (PlayerInfo.TotalMoons >= 500 && !MixedMarathonButton.IsVisible)
+            {
+                MixedMarathonButton.IsVisible = true;
+                MixedMarathonLock.IsVisible = false;
+            }
 
             double hue = backColor.Hue;
 
@@ -188,7 +194,7 @@ namespace HexaGuessr.Views
                 System.Diagnostics.Debug.WriteLine(ex);
             }
         }
-
+        
         private async void GuessHexButton_Clicked(object sender, EventArgs e)
         {
             PlayerInfo.CurrentGameMode = GameMode.GuessHex;
@@ -204,7 +210,7 @@ namespace HexaGuessr.Views
         private async void MixedMarathonButton_Clicked(object sender, EventArgs e)
         {
             PlayerInfo.CurrentGameMode = GameMode.Mixed;
-            if (rand.Next(0, 10) % 2 == 0)
+            if (rand.Next(0, 10) < 5)
                 await Navigation.PushAsync(new GuessHexPage());
             else
                 await Navigation.PushAsync(new GuessColorPage());

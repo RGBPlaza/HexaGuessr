@@ -49,10 +49,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -81,62 +79,59 @@
                 <Label Text="Average" FontSize="20"/>
             </StackLayout>
 
-            <Label Grid.Row="2" Grid.ColumnSpan="3" Text="Previous Marathons" FontSize="28"/>
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Spacing="0" Margin="0,16,0,0">
+                <Label Text="Previous Marathons" FontSize="28"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Total" FontSize="14"/>
+                    <Label Grid.Column="1" Text="Rounds" FontSize="14"/>
+                    <Label Grid.Column="2" Text="Average" FontSize="14"/>
+                    <Label Grid.Column="3" Text="Date" FontSize="14"/>
+                </Grid>
+                <ListView x:Name="HistoryListView" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="48"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Label Text="{Binding Score}" FontSize="12"/>
+                                        <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Text="{Binding Rounds}" FontSize="12"/>
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Label Text="{Binding MeanScore}" FontSize="12"/>
+                                        <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="3" Text="{Binding DateString}" FontSize="12"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
-            <Grid Grid.Row="3" Grid.ColumnSpan="3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="48"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="Total" FontSize="14"/>
-                <Label Grid.Column="1" Text="Rounds" FontSize="14"/>
-                <Label Grid.Column="2" Text="Average" FontSize="14"/>
-                <Label Grid.Column="3" Text="Date" FontSize="14"/>
-            </Grid>
-            <ListView x:Name="HistoryListView" Grid.Row="4" Grid.ColumnSpan="3" ItemSelected="ListView_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="48"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Label Text="{Binding Score}" FontSize="12"/>
-                                    <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
-                                </StackLayout>
-                                <Label Grid.Column="1" Text="{Binding Rounds}" FontSize="12"/>
-                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Label Text="{Binding MeanScore}" FontSize="12"/>
-                                    <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
-                                </StackLayout>
-                                <Label Grid.Column="3" Text="{Binding DateString}" FontSize="12"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            <Button x:Name="HomeButton" Grid.Row="5" Grid.ColumnSpan="3" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="48" WidthRequest="256" HorizontalOptions="Center" Clicked="HomeButton_Clicked">
-                <Button.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light" />
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                    </OnPlatform>
-                </Button.FontFamily>
-            </Button>
+            <Label x:Name="HomeButton" Grid.Row="3" Grid.ColumnSpan="3" Text="Home" BackgroundColor="#eeeeeeee" TextColor="Black" FontSize="26" HeightRequest="40" WidthRequest="256" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HomeButton_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
 
         </Grid>
     </ContentPage.Content>

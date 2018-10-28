@@ -3,65 +3,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HexaGuessr.Views.MenuPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="#eeeeeeee"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="256"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="4" ColumnSpacing="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="48"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="72"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="256"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <AbsoluteLayout x:Name="ConstellationsCanvas" Grid.RowSpan="6"/>
+            <AbsoluteLayout x:Name="ConstellationsCanvas" Grid.RowSpan="9" Grid.ColumnSpan="3"/>
 
-            <Label Text="HexaGuessr" Grid.Row="1" FontSize="42" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" HorizontalOptions="CenterAndExpand">
-                <Label.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="Moon-Light"/>
-                        <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
-                        <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
-                    </OnPlatform>
-                </Label.FontFamily>
+            <Label Text="HexaGuessr" Grid.Row="1" Grid.ColumnSpan="3" FontSize="42" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+
+            <Label x:Name="GuessHexButton" Text="Guess Hex" Grid.Row="3" Grid.Column="1" FontSize="26" BackgroundColor="#eeeeeeee">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GuessHexButton_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="GuessColorButton" Text="Guess Color" Grid.Row="4" Grid.Column="1" FontSize="26" BackgroundColor="#eeeeeeee" IsVisible="False">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="GuessColorButton_Clicked"/>
+                </Label.GestureRecognizers>
+            </Label>      
+            <Label x:Name="MixedMarathonButton" Text="Mixed Marathon" Grid.Row="5" Grid.Column="1" FontSize="24" BackgroundColor="#eeeeeeee" IsVisible="False">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MixedMarathonButton_Clicked"/>
+                </Label.GestureRecognizers>
             </Label>
 
-            <StackLayout Grid.Row="3" Spacing="4" HorizontalOptions="Center">
-                <Button x:Name="GuessHexButton" Text="Guess Hex" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessHexButton_Clicked">
-                    <Button.FontFamily>
+            <Grid x:Name="GuessColorLock" Grid.Row="4" Grid.Column="1" BackgroundColor="#66eeeeee">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20">
+                    <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light"/>
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
                         </OnPlatform>
-                    </Button.FontFamily>
-                </Button>
-                <Button x:Name="GuessColorButton" Text="Guess Color" BackgroundColor="#eeeeeeee" FontSize="26" HeightRequest="48" WidthRequest="256" Clicked="GuessColorButton_Clicked">
-                    <Button.FontFamily>
+                    </Label.FontFamily>
+                    <Label.Text>
                         <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light"/>
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
                         </OnPlatform>
-                    </Button.FontFamily>
-                </Button>
-                <Button x:Name="MixedMarathonButton" Text="Mixed Marathon" BackgroundColor="#eeeeeeee" FontSize="24" HeightRequest="48" WidthRequest="256" Clicked="MixedMarathonButton_Clicked">
-                    <Button.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light"/>
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light"/>
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon"/>
-                        </OnPlatform>
-                    </Button.FontFamily>
-                </Button>
-            </StackLayout>
-
-            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End" Padding="16,8" Spacing="16">
-                <StackLayout Grid.Column="4" Orientation="Horizontal" Spacing="8" VerticalOptions="Center">
-                    <Label TextColor="White" FontSize="19">
+                    </Label.Text>
+                </Label>
+                <StackLayout Orientation="Horizontal" Spacing="8" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="2">
+                    <Label Text="200" FontSize="20"/>
+                    <Label FontSize="20">
                         <Label.FontFamily>
                             <OnPlatform x:TypeArguments="x:String">
                                 <On Platform="iOS" Value="MaterialIcons-Regular"/>
@@ -77,35 +112,90 @@
                             </OnPlatform>
                         </Label.Text>
                     </Label>
-                    <Label x:Name="TotalScoreLabel" TextColor="White" FontSize="19">
-                        <Label.FontFamily>
-                            <OnPlatform x:TypeArguments="x:String">
-                                <On Platform="iOS" Value="Moon-Light" />
-                                <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                                <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                            </OnPlatform>
-                        </Label.FontFamily>
-                    </Label>
                 </StackLayout>
-                <Button x:Name="LeaderBoardButton" BackgroundColor="#eeeeeeee" FontSize="20" HeightRequest="48" WidthRequest="48" Clicked="LeaderBoardButton_Clicked">
-                    <Button.FontFamily>
+            </Grid>
+
+            <Grid x:Name="MixedMarathonLock" Grid.Row="5" Grid.Column="1" BackgroundColor="#66eeeeee">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label FontSize="20">
+                    <Label.FontFamily>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value="MaterialIcons-Regular"/>
                             <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
                             <On Platform="UWP" Value="Segoe MDL2 Assets"/>
                         </OnPlatform>
-                    </Button.FontFamily>
-                    <Button.Text>
+                    </Label.FontFamily>
+                    <Label.Text>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Label.Text>
+                </Label>
+                <StackLayout Orientation="Horizontal" Spacing="8" VerticalOptions="Center" HorizontalOptions="Center" Grid.ColumnSpan="2">
+                    <Label Text="500" FontSize="20"/>
+                    <Label FontSize="20">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                                <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                                <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                        <Label.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value=""/>
+                                <On Platform="Android" Value=""/>
+                                <On Platform="UWP" Value=""/>
+                            </OnPlatform>
+                        </Label.Text>
+                    </Label>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="7" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End" Padding="16" Spacing="16">
+                <StackLayout Orientation="Horizontal" Spacing="8" VerticalOptions="Center">
+                    <Label TextColor="White" FontSize="20">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                                <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                                <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                        <Label.Text>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value=""/>
+                                <On Platform="Android" Value=""/>
+                                <On Platform="UWP" Value=""/>
+                            </OnPlatform>
+                        </Label.Text>
+                    </Label>
+                    <Label x:Name="TotalScoreLabel" TextColor="White" FontSize="20"/>
+                </StackLayout>
+                <Label x:Name="LeaderBoardButton" BackgroundColor="#eeeeeeee" FontSize="20" HeightRequest="40" WidthRequest="40">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                    <Label.Text>
                         <OnPlatform x:TypeArguments="x:String">
                             <On Platform="iOS" Value=""/>
                             <On Platform="Android" Value=""/>
                             <On Platform="UWP" Value=""/>
                         </OnPlatform>
-                    </Button.Text>
-                </Button>
+                    </Label.Text>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LeaderBoardButton_Clicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
-
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

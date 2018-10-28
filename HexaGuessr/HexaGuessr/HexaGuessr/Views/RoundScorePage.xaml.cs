@@ -62,10 +62,6 @@ namespace HexaGuessr.Views
             CommentLabel.TranslationX = Application.Current.MainPage.Width / 8;
             CommentLabel.Opacity = 0;
 
-            NavStackLayout.Orientation = Device.Idiom == TargetIdiom.Phone ? StackOrientation.Vertical : StackOrientation.Horizontal;
-            if (Device.RuntimePlatform == Device.Android)
-                NextButton.Margin = new Thickness(0, -4, 0, 0);
-
 		}
 
         protected override void OnAppearing()
@@ -84,7 +80,7 @@ namespace HexaGuessr.Views
             if(PlayerInfo.CurrentGameMode == GameMode.Mixed)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-                if (rand.Next(0, 10) % 2 == 0)
+                if (rand.Next(0, 10) < 5)
                     Navigation.InsertPageBefore(new GuessHexPage(), this);
                 else
                     Navigation.InsertPageBefore(new GuessColorPage(), this);

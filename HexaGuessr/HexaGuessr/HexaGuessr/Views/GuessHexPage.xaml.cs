@@ -70,8 +70,8 @@ namespace HexaGuessr.Views
                     HexEntry.Text = e.NewTextValue.Substring(0, 7);
             }
 
-            SubmitButton.BackgroundColor = Color.FromHex("#44eeeeee");
-            SubmitButton.TextColor = Color.Black;
+            SubmitButton.BackgroundColor = Color.FromHex("#66eeeeee");
+            SubmitButton.TextColor = Color.FromHex("#66eeeeee");
             SubmitButton.IsEnabled = false;
 
         }
@@ -84,8 +84,11 @@ namespace HexaGuessr.Views
 
         private async void HexEntry_Enter(object sender, EventArgs e)
         {
-            Color guessedColor = ColorUtility.HexToColor(HexEntry.Text.Replace("#", ""));
-            await Navigation.PushAsync(new RoundScorePage(colorToGuess, guessedColor));
+            if (SubmitButton.IsEnabled)
+            {
+                Color guessedColor = ColorUtility.HexToColor(HexEntry.Text.Replace("#", ""));
+                await Navigation.PushAsync(new RoundScorePage(colorToGuess, guessedColor));
+            }
         }
 
     }

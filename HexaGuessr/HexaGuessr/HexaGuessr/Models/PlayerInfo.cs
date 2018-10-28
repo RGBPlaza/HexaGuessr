@@ -21,11 +21,11 @@ namespace HexaGuessr.Models
         public static void LoadMarathons()
         {
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName);
+            System.Diagnostics.Debug.WriteLine(filePath);
             if (File.Exists(filePath))
             {
                 string marathonsJson = File.ReadAllText(filePath);
                 Marathons = string.IsNullOrWhiteSpace(marathonsJson) ? new List<Marathon>() : JsonConvert.DeserializeObject<List<Marathon>>(marathonsJson);
-                System.Diagnostics.Debug.WriteLine(Marathons.Count);
             }
             else
             {
