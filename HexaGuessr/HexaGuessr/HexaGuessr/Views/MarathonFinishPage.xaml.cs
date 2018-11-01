@@ -38,7 +38,6 @@ namespace HexaGuessr.Views
 
             PlayerInfo.Marathons.Add(marathon);
             HistoryListView.ItemsSource = PlayerInfo.Marathons.Where(o => o.GameMode == PlayerInfo.CurrentGameMode).OrderByDescending(o => o.Score).Take(5);
-            System.Diagnostics.Debug.WriteLine(marathon.MeanScore);
             PlayerInfo.SaveMarathons();
 		}
 

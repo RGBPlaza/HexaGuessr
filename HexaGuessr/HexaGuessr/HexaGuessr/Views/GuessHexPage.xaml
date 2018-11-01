@@ -4,23 +4,6 @@
              x:Class="HexaGuessr.Views.GuessHexPage"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="FontFamily">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -37,49 +20,16 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="48" HeightRequest="48" BorderWidth="0" TextColor="White" BackgroundColor="Transparent" Clicked="BackButton_Clicked">
-                <Button.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="MaterialIcons-Regular"/>
-                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
-                        <On Platform="UWP" Value="Segoe MDL2 Assets"/>
-                    </OnPlatform>
-                </Button.FontFamily>
-                <Button.Text>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value=""/>
-                        <On Platform="Android" Value=""/>
-                        <On Platform="UWP" Value=""/>
-                    </OnPlatform>
-                </Button.Text>
-                <Button.FontSize>
-                    <OnPlatform x:TypeArguments="x:Double" Android="24" Default="19"/>
-                </Button.FontSize>
-            </Button>
+            <Button x:Name="BackButton" Style="{StaticResource BackButton}" Clicked="BackButton_Clicked"/>
 
             <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="8">
-                <Label TextColor="White" FontSize="19">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
-                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
-                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                    <Label.Text>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value=""/>
-                            <On Platform="Android" Value=""/>
-                            <On Platform="UWP" Value=""/>
-                        </OnPlatform>
-                    </Label.Text>
-                </Label>
-                <Label x:Name="ScoreLabel" TextColor="White" FontSize="19"/>
+                <Label FontSize="19" Style="{StaticResource MoonLabel}"/>
+                <Label x:Name="ScoreLabel" FontSize="19"/>
             </StackLayout>
 
             <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <Label Text="Guess the Hex" FontSize="32" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label x:Name="RoundLabel" FontSize="56" VerticalTextAlignment="Center" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="Guess the Hex" FontSize="32" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                <Label x:Name="RoundLabel" FontSize="56" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
 
             <Entry x:Name="HexEntry" Grid.Row="3" Grid.Column="1" FontSize="42" BackgroundColor="Transparent" TextColor="White" Placeholder="Type Here" PlaceholderColor="White" TextChanged="HexEntry_TextChanged" Completed="HexEntry_Enter" VerticalOptions="Center" HorizontalTextAlignment="Center">

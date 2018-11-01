@@ -4,23 +4,6 @@
              x:Class="HexaGuessr.Views.RoundScorePage"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="FontFamily">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -36,24 +19,8 @@
             <BoxView x:Name="GuessBackground" Grid.Row="1" Grid.RowSpan="2"/>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="8">
-                <Label TextColor="White" FontSize="19">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
-                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
-                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                    <Label.Text>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <!-- These Characters are Moon Icons -->
-                            <On Platform="iOS" Value=""/>
-                            <On Platform="Android" Value=""/>
-                            <On Platform="UWP" Value=""/>
-                        </OnPlatform>
-                    </Label.Text>
-                </Label>
-                <Label x:Name="TotalScoreLabel" TextColor="White" FontSize="19"/>
+                <Label FontSize="19" Style="{StaticResource MoonLabel}"/>
+                <Label x:Name="TotalScoreLabel" FontSize="19"/>
             </StackLayout>
             
             <StackLayout x:Name="ActualStackLayout" Grid.Row="0" VerticalOptions="Center">

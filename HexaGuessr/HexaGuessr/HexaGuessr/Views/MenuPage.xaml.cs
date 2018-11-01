@@ -82,6 +82,11 @@ namespace HexaGuessr.Views
                 return Navigation.NavigationStack.Last() == this || Device.RuntimePlatform == Device.Android;
             });
 
+
+            // Noob Alert
+            if (PlayerInfo.TotalMoons == 0)
+                DisplayAlert("A Friendly Warning", "Playing this game with any color filter active will skew results, increasing challenge. Make of this what you will :)", "Cool Story Bro");
+
         }
         protected override void OnDisappearing()
         {
@@ -218,7 +223,6 @@ namespace HexaGuessr.Views
 
         private async void LeaderBoardButton_Clicked(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("hi");
             await Navigation.PushAsync(new LeaderBoardPage(backColor));
         }
 

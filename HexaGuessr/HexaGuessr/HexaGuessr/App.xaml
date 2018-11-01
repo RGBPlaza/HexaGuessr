@@ -2,9 +2,77 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HexaGuessr.App">
-	<Application.Resources>
-
-		<!-- Application resource dictionary -->
-
-	</Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="MoonLabel">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Text">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Button" x:Key="BackButton">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                            <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                            <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Text">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value=""/>
+                            <On Platform="Android" Value=""/>
+                            <On Platform="UWP" Value=""/>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double" Android="24" Default="19"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="HeightRequest" Value="48"/>
+                <Setter Property="BorderWidth" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

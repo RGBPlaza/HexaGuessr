@@ -4,53 +4,83 @@
              x:Class="HexaGuessr.Views.LeaderBoardPage"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Label">
-                <Setter Property="FontFamily">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="48" HeightRequest="48" BorderWidth="0" TextColor="White" BackgroundColor="Transparent" Clicked="BackButton_Clicked">
-                <Button.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value="MaterialIcons-Regular"/>
-                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
-                        <On Platform="UWP" Value="Segoe MDL2 Assets"/>
-                    </OnPlatform>
-                </Button.FontFamily>
-                <Button.Text>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="iOS" Value=""/>
-                        <On Platform="Android" Value=""/>
-                        <On Platform="UWP" Value=""/>
-                    </OnPlatform>
-                </Button.Text>
-                <Button.FontSize>
-                    <OnPlatform x:TypeArguments="x:Double" Android="24" Default="19"/>
-                </Button.FontSize>
-            </Button>
+            <Button x:Name="BackButton" Style="{StaticResource BackButton}" Clicked="BackButton_Clicked"/>
 
-            <Label Grid.Row="1" Text="HexaGuessr" FontSize="42" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Start" Padding="16" Spacing="8">
+                <Label FontSize="19" Style="{StaticResource MoonLabel}"/>
+                <Label x:Name="ScoreLabel" FontSize="19"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="0">
+                <Label Text="Leaderboard" FontSize="40"/>
+                <Label Text="Top 10 Marathons" FontSize="30"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center" Orientation="Horizontal" Spacing="8">
+                <Label Text="GameMode:">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double" WinPhone="16" Android="20"/>
+                    </Label.FontSize>
+                </Label>
+                <Picker x:Name="MarathonTypePicker" SelectedIndexChanged="MarathonTypePicker_SelectedIndexChanged" WidthRequest="128"/>
+            </StackLayout>
             
+            <StackLayout Grid.Row="3" Spacing="0">
+                <Grid Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Total" FontSize="14"/>
+                    <Label Grid.Column="1" Text="Rounds" FontSize="14"/>
+                    <Label Grid.Column="2" Text="Average" FontSize="14"/>
+                    <Label Grid.Column="3" Text="Date" FontSize="14"/>
+                </Grid>
+                <ListView x:Name="HistoryListView" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="48"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Label Text="{Binding Score}" FontSize="12"/>
+                                        <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="1" Text="{Binding Rounds}" FontSize="12"/>
+                                    <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
+                                        <Label Text="{Binding MeanScore}" FontSize="12"/>
+                                        <Label Style="{StaticResource MoonLabel}" FontSize="12"/>
+                                    </StackLayout>
+                                    <Label Grid.Column="3" Text="{Binding DateString}" FontSize="12"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
