@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HexaGuessr.Views.LeaderBoardPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="Moon-Light" />
+                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
+                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BackButton" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="48" HeightRequest="48" BorderWidth="0" TextColor="White" BackgroundColor="Transparent" Clicked="BackButton_Clicked">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="MaterialIcons-Regular"/>
+                        <On Platform="Android" Value="MaterialIcons-Regular.ttf#MaterialIcons-Regular"/>
+                        <On Platform="UWP" Value="Segoe MDL2 Assets"/>
+                    </OnPlatform>
+                </Button.FontFamily>
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value=""/>
+                        <On Platform="Android" Value=""/>
+                        <On Platform="UWP" Value=""/>
+                    </OnPlatform>
+                </Button.Text>
+                <Button.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="24" Default="19"/>
+                </Button.FontSize>
+            </Button>
+
+            <Label Grid.Row="1" Text="HexaGuessr" FontSize="42" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HexaGuessr.Views.MenuPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -17,20 +18,6 @@
                 </Setter>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="Button">
-                <Setter Property="FontFamily">
-                    <Setter.Value>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="iOS" Value="Moon-Light" />
-                            <On Platform="Android" Value="Moon-Light.otf#Moon-Light" />
-                            <On Platform="UWP" Value="Assets/Fonts/Moon-Light.otf#Moon" />
-                        </OnPlatform>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="BackgroundColor" Value="#eeeeeeee"/>
-                <Setter Property="HeightRequest" Value="40"/>
-                <Setter Property="WidthRequest" Value="256"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -66,7 +53,7 @@
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="GuessColorButton_Clicked"/>
                 </Label.GestureRecognizers>
-            </Label>      
+            </Label>
             <Label x:Name="MixedMarathonButton" Text="Mixed Marathon" Grid.Row="5" Grid.Column="1" FontSize="24" BackgroundColor="#eeeeeeee" IsVisible="False">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="MixedMarathonButton_Clicked"/>
@@ -114,7 +101,6 @@
                     </Label>
                 </StackLayout>
             </Grid>
-
             <Grid x:Name="MixedMarathonLock" Grid.Row="5" Grid.Column="1" BackgroundColor="#66eeeeee">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48"/>

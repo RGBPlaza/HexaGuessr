@@ -218,7 +218,8 @@ namespace HexaGuessr.Views
 
         private async void LeaderBoardButton_Clicked(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Debug.WriteLine("hi");
+            await Navigation.PushAsync(new LeaderBoardPage(backColor));
         }
 
     }
